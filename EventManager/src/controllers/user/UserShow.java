@@ -16,7 +16,7 @@ public class UserShow extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserBean user = new UserBean();
 		request.setAttribute("user", user);
-		RequestDispatcher rd = request.getRequestDispatcher("/jsp/UserShow.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/jsp/views/user/UserShow.jsp");
 		rd.forward(request, response);
 	
 	}
