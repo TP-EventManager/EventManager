@@ -1,3 +1,4 @@
+package controllers.user;
 public class UserBean {
 
 		private String firstName;
