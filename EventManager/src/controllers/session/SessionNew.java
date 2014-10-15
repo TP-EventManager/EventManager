@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import controllers.common.EventManagerServlet;
 
-@WebServlet({"/login"})
+@WebServlet("/login")
 public class SessionNew extends EventManagerServlet {
 
     public SessionNew() { super(); }
