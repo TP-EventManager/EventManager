@@ -1,12 +1,19 @@
 <%@ include file="/WEB-INF/jspf/Prolog.jspf" %>
 
 <section>
-	<h3> Sign in </h3>
-
-	<c:if test="${!empty param.error}">
-		<p class="bg-danger">Error: Wrong user name or password</p>
+	<c:if test="${param.error == \"authentication\" }">
+		<section class="bg-info">
+			<p>You need to be logged in to do that.</p>
+			<p>Doesn't have an account? <a href="/EventManager/user_new">Create one now</a></p>
+		</section>
 	</c:if>
 
+	<h3> Sign in </h3>
+
+	<c:if test="${param.error == \"credentials\" }">
+		<p class="bg-danger">Error: Wrong user name or password</p>
+	</c:if>
+	
 	<form action="/EventManager/login" method="post">
 		<div class="form-group">
 			<label for="user_email">Your email</label> 

@@ -30,7 +30,7 @@ public class SessionNew extends EventManagerServlet {
 			response.sendRedirect("/EventManager/user");
 		}
 		else {
-			response.sendRedirect("/EventManager/login?error=true");
+			response.sendRedirect("/EventManager/login?error=credentials");
 		}
 	}
 }
