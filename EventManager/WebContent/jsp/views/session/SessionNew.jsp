@@ -1,7 +1,12 @@
 <%@ include file="/WEB-INF/jspf/Prolog.jspf" %>
 
 	<h3> Sign in </h3>
-	<form action="/login" method="post">
+	
+	<c:if test="${!empty param.error}">
+		<p>Error: Wrong user name or password</p>
+	</c:if>
+	
+	<form action="/EventManager/login" method="post">
 		<div class="field">
 			<label for="user_email">Your email</label> 
 			<input type="text" id="user_email" name="userEmail" required>
