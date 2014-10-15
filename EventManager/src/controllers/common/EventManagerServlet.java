@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class EventManagerServlet extends HttpServlet {
 
 	public void renderView(String viewPath, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/jsp/views/" + viewPath);
+		RequestDispatcher rd = request.getRequestDispatcher("/jsp/templates/Main.jsp");
+		request.setAttribute("view", "/jsp/" + viewPath);
 		rd.forward(request, response);
 	}
 }
