@@ -2,6 +2,8 @@ package controllers.common;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -18,8 +20,18 @@ import javax.servlet.http.HttpSession;
 public class AuthenticationFilter implements Filter {
 
 	static String[] allowed = {
-		"/", "/login", "/user_new"
+		"^/$", "^/login$", "^/user_new$", "^/assets/*$"
 	};
+	
+	private boolean isAllowed(String path) {
+		for (String url : allowed) {
+			Pattern p = Pattern.compile(url);
+			Matcher m = p.matcher(path);
+			if (m.matches())
+				return true;
+		}
+		return false;
+	}
 	
     public AuthenticationFilter() { }
 
@@ -32,7 +44,7 @@ public class AuthenticationFilter implements Filter {
 		HttpServletResponse httpResponse = (HttpServletResponse)response;
 		
 		HttpSession session = httpRequest.getSession(false);
-		if (Arrays.asList(allowed).contains(httpRequest.getServletPath()) || (session != null && session.getAttribute("token") != null))
+		if (isAllowed(httpRequest.getServletPath()) || (session != null && session.getAttribute("token") != null))
 			chain.doFilter(request, response);
 		else
 			httpResponse.sendRedirect("/EventManager/login?error=authentication");
