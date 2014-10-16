@@ -2,7 +2,7 @@
 
 <section>
 	<c:if test="${param.error == \"authentication\" }">
-		<section class="bg-info">
+		<section class="alert alert-info">
 			<p>You need to be logged in to do that.</p>
 			<p>Doesn't have an account? <a href="/EventManager/user_new">Create one now</a></p>
 		</section>
@@ -11,7 +11,7 @@
 	<h3> Sign in </h3>
 
 	<c:if test="${param.error == \"credentials\" }">
-		<p class="bg-danger">Error: Wrong user name or password</p>
+		<p class="alert alert-danger">Error: Wrong user name or password</p>
 	</c:if>
 	
 	<form action="/EventManager/login" method="post">
