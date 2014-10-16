@@ -7,10 +7,7 @@
 column      | type
 ------------|--------
 email       | string (primary key)
-first_name  | string
-last_name   | string
 password    | string
-company     | string
 
 ### Event table
 
@@ -21,14 +18,16 @@ name           | string
 adresse        | string
 beginning_date | datetime
 end_date       | datetime
+email       | (foreign key to User)
 
 ### Subcription table
 
 column      | type
 ------------|--------
-user        | (foreign key to User)
+first_name  | string
+last_name   | string
+company     | string
 event       | (foreign key to Event)
-(username, event_id) | primary key
 
 ## Use cases
 
@@ -38,7 +37,6 @@ action      | url
 ------------|--------
 Get form to create user | GET  /new_user
 Create user             | POST /new_user
-Show user page          | GET  /user?email=EMAIL
 
 ### Session
 
