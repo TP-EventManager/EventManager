@@ -5,7 +5,7 @@
 	<form action="/user_new" method="post">
 		<div class="form-group">
 			<label for="user_email">Your email*</label> 
-			<input type="text" id="user_email" name="userEmail" required class="form-control">
+			<input type="email" id="user_email" name="userEmail" required class="form-control">
 		</div>
 
 		<div class="form-group">
