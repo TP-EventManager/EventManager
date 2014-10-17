@@ -4,8 +4,8 @@
 	<h3> ${event.name} </h3>
 	<table class="table">
 		<tr>
-			<th>Where</th>
-			<th>${event.address}</th>
+			<td>Where</td>
+			<td>${event.address}</td>
 		</tr>
 		<tr>
 			<td>When</td>
