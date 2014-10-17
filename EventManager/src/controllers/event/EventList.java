@@ -23,6 +23,7 @@ public class EventList extends EventManagerServlet {
 		events.add(new EventBean());
 		events.add(new EventBean());
 		events.add(new EventBean());
+		events.get(0).setPublished(true);
 		UserBean user = new UserBean();
 		request.setAttribute("events", events);
 		request.setAttribute("user", user);

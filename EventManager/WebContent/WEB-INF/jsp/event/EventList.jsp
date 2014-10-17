@@ -8,9 +8,9 @@
 				<th> Event </th>
 				<th> Where </th>
 				<th> Beginning  </th>
-				<th> End  </th>	
+				<th> End  </th>
 				<th> Published </th>
-				<th> Show </th>
+				<th> Action </th>
 			</tr>
 		</thead>
 		<tbody>
@@ -27,7 +27,18 @@
 								<c:otherwise>                      No  </c:otherwise>
 							</c:choose>		
 						</td>
-						<td><a href="${pageContext.request.contextPath}/event" class="btn btn-primary">Show</a></td>
+						<td>
+							<c:choose>
+								<c:when test="${event.published}">
+									<a href="${pageContext.request.contextPath}/event" class="btn btn-primary">Show</a>
+								</c:when>
+								<c:otherwise>
+									<form action="${pageContext.request.contextPath}/publish" method="post">
+										<input type="submit" value="Publish" class="btn btn-primary">
+									</form>
+								</c:otherwise>
+							</c:choose>	
+						</td>
 					</tr>
 
 			</c:forEach>

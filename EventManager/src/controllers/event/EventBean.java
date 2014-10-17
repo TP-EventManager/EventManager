@@ -54,7 +54,7 @@ public class EventBean {
 		return published;
 	}
 
-	public void setPublised(boolean published) {
+	public void setPublished(boolean published) {
 		this.published = published;
 	}
 	
