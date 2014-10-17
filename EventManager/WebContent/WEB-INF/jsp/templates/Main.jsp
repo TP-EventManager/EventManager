@@ -15,7 +15,15 @@
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<a href="${pageContext.request.contextPath}" class="navbar-brand"> Event Manager </a>
+						<c:choose>
+							<c:when test="${empty sessionScope.token}">
+    							<a href="${pageContext.request.contextPath}" class="navbar-brand"> Event Manager </a>
+    						</c:when>
+    						<c:otherwise>
+    							<a href="${pageContext.request.contextPath}/events" class="navbar-brand"> Event Manager </a>
+    						</c:otherwise>
+						</c:choose>
+						
 					</div>
 					<c:choose>
 						<c:when test="${empty sessionScope.token}">

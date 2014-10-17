@@ -27,7 +27,7 @@ public class SessionNew extends EventManagerServlet {
 		
 		if ("secret".equals(password)) {
 			session.setAttribute("token", email);
-			redirectTo("/event", request, response);
+			redirectTo("/events", request, response);
 		}
 		else {
 			redirectTo("/login?error=credentials", request, response);
