@@ -2,7 +2,7 @@
 
 <section>
 	<h3> Create an account now ! </h3>
-	<form action="/user_new" method="post">
+	<form action="${pageContext.request.contextPath}/user_new" method="post">
 		<div class="form-group">
 			<label for="user_email">Your email</label> 
 			<input type="email" id="user_email" name="userEmail" required class="form-control">

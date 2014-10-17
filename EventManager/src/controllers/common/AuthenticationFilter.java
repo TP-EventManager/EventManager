@@ -47,7 +47,7 @@ public class AuthenticationFilter implements Filter {
 		if (isAllowed(httpRequest.getServletPath()) || (session != null && session.getAttribute("token") != null))
 			chain.doFilter(request, response);
 		else
-			httpResponse.sendRedirect("/EventManager/login?error=authentication");
+			httpResponse.sendRedirect(httpRequest.getContextPath().toString() + "/login?error=authentication");
 		
 	}
 }

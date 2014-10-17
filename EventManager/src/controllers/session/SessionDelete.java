@@ -14,7 +14,7 @@ public class SessionDelete extends EventManagerServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession(false).invalidate();
-		response.sendRedirect("/EventManager/");
+		redirectTo("/", request, response);
 	}
 
 }

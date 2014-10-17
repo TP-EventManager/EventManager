@@ -4,7 +4,7 @@
 	<c:if test="${param.error == \"authentication\" }">
 		<section class="alert alert-info">
 			<p>You need to be logged in to do that.</p>
-			<p>Doesn't have an account? <a href="/EventManager/user_new">Create one now</a></p>
+			<p>Doesn't have an account? <a href="${pageContext.request.contextPath}/user_new">Create one now</a></p>
 		</section>
 	</c:if>
 
@@ -14,7 +14,7 @@
 		<p class="alert alert-danger">Error: Wrong user name or password</p>
 	</c:if>
 	
-	<form action="/EventManager/login" method="post">
+	<form action="${pageContext.request.contextPath}/login" method="post">
 		<div class="form-group">
 			<label for="user_email">Your email</label> 
 			<input type="text" id="user_email" name="userEmail" required class="form-control">

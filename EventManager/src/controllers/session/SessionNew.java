@@ -27,10 +27,10 @@ public class SessionNew extends EventManagerServlet {
 		
 		if ("secret".equals(password)) {
 			session.setAttribute("token", email);
-			response.sendRedirect("/EventManager/event");
+			redirectTo("/event", request, response);
 		}
 		else {
-			response.sendRedirect("/EventManager/login?error=credentials");
+			redirectTo("/login?error=credentials", request, response);
 		}
 	}
 }

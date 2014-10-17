@@ -15,4 +15,8 @@ public abstract class EventManagerServlet extends HttpServlet {
 		request.setAttribute("view", "/jsp/" + viewPath);
 		rd.forward(request, response);
 	}
+	
+	public void redirectTo(String url, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.sendRedirect(request.getContextPath() + url);
+	}
 }
