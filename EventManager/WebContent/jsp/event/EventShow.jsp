@@ -8,8 +8,13 @@
 			<th>${event.address}</th>
 		</tr>
 		<tr>
-			<th>When</th>
-			<th>From ${event.beginning_date} to ${event.end_date}</th>
+			<td>When</td>
+			<td>
+				From 
+				<fmt:formatDate value="${event.beginning_date}" pattern="dd/MM/yyyy hh:ss"/> 
+				to 
+				<fmt:formatDate value="${event.end_date}" pattern="dd/MM/yyyy hh:ss"/>
+			</td>
 		</tr>
 	</table>
 </section>
