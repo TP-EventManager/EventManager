@@ -18,6 +18,7 @@ name           | string
 adresse        | string
 beginning_date | datetime
 end_date       | datetime
+published  | boolean
 email       | (foreign key to User)
 
 ### Subcription table
