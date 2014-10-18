@@ -25,6 +25,7 @@ email       | (foreign key to User)
 
 column      | type
 ------------|--------
+email          | string
 first_name  | string
 last_name   | string
 company     | string
