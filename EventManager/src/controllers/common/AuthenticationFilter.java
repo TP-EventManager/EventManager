@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 public class AuthenticationFilter implements Filter {
 
 	static String[] allowed = {
-		"^/$", "^/login$", "^/user_new$", "^/assets/*$"
+		"^/$", "^/login$", "^/user_new$", "^/event$", "^/assets/*$"
 	};
 	
 	private boolean isAllowed(String path) {
