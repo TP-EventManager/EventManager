@@ -5,4 +5,40 @@
     <servlet-name>default</servlet-name>
     <url-pattern>/assets/*</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Test</display-name>
+    <servlet-name>Test</servlet-name>
+    <servlet-class>controllers.test.Test</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>SessionNew</display-name>
+    <servlet-name>SessionNew</servlet-name>
+    <servlet-class>controllers.session.SessionNew</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>SessionDelete</display-name>
+    <servlet-name>SessionDelete</servlet-name>
+    <servlet-class>controllers.session.SessionDelete</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>EventList</display-name>
+    <servlet-name>EventList</servlet-name>
+    <servlet-class>controllers.event.EventList</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>EventShow</display-name>
+    <servlet-name>EventShow</servlet-name>
+    <servlet-class>controllers.event.EventShow</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>UserNew</display-name>
+    <servlet-name>UserNew</servlet-name>
+    <servlet-class>controllers.user.UserNew</servlet-class>
+  </servlet>
 </web-app>

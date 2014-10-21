@@ -1,11 +1,13 @@
 package controllers.session;
 
-import controllers.common.EventManagerServlet;
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import controllers.common.EventManagerServlet;
 
 @WebServlet("/logout")
 public class SessionDelete extends EventManagerServlet {
