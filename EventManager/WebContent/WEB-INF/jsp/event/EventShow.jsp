@@ -30,18 +30,18 @@
 		</div>
 		
 		<div class="form-group">
-			<label for="user_firstname">Your first name</label> 
-			<input type="text" id="user_firstname" name="userFirstName" class="form-control">
+			<label for="user_firstname">Your first name*</label> 
+			<input type="text" id="user_firstname" name="userFirstName" required class="form-control">
 		</div>
 
 		<div class="form-group">
-			<label for="user_lastname">Your last name</label> 
-			<input type="text" id="user_lastname" name="userlastName" class="form-control">
+			<label for="user_lastname">Your last name*</label> 
+			<input type="text" id="user_lastname" name="userlastName" required class="form-control">
 		</div>
 
 		<div class="form-group">
-			<label for="user_company">Your company</label> 
-			<input type="text" id="user_company" name="userCompany" class="form-control">
+			<label for="user_company">Your company*</label> 
+			<input type="text" id="user_company" name="userCompany" required class="form-control">
 		</div>
 		
 		<input type="submit" value="Subscribe" class="btn btn-primary btn-lg">
