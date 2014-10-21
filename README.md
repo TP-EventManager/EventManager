@@ -13,7 +13,7 @@ password    | string
 
 column         | type
 ---------------|--------
-uuid           | string (primary key)
+id           | integer (primary key)
 name           | string
 adresse        | string
 beginning_date | datetime
