@@ -1,6 +1,6 @@
-drop app.Users;
-drop app.Events;
 drop app.Subscriptions;
+drop app.Events;
+drop app.Users;
 
 
 create table app.Users (
@@ -20,7 +20,7 @@ create table app.Events  (
 );
 
 create table app.Subscriptions (
-	email varchar(32) not null,
+	email varchar(32) not null primary key,
 	first_name varchar(32) not null,
 	last_name varchar(32) not null,
 	company varchar(32) not null,
