@@ -43,4 +43,5 @@
 
 			</c:forEach>
 	</table>
+	<a href="${pageContext.request.contextPath}/event_new" class="btn btn-primary">Add an event</a>
 </section>
