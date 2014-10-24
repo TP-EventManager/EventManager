@@ -11,9 +11,9 @@
 			<td>When</td>
 			<td>
 				From 
-				<fmt:formatDate value="${event.beginning_date}" pattern="dd/MM/yyyy hh:ss"/> 
+				<fmt:formatDate value="${event.beginningDate}" pattern="dd/MM/yyyy hh:ss"/> 
 				to 
-				<fmt:formatDate value="${event.end_date}" pattern="dd/MM/yyyy hh:ss"/>
+				<fmt:formatDate value="${event.endDate}" pattern="dd/MM/yyyy hh:ss"/>
 			</td>
 		</tr>
 	</table>

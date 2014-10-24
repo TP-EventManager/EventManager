@@ -46,7 +46,6 @@ public class EventNew extends EventManagerServlet {
 		e.setPublished(published);
 		
 		new EventsPersistenceJPA().insert(e);
-		
 		redirectTo("/events", request, response);
 	}
 

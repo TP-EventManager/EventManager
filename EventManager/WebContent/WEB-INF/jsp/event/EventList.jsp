@@ -19,17 +19,17 @@
 					<tr>
 						<td>${event.name}</td>
 						<td>${event.address}</td>
-						<td><fmt:formatDate value="${event.beginning_date}" pattern="dd/MM/yyyy hh:ss"/></td>
-						<td><fmt:formatDate value="${event.end_date}" pattern="dd/MM/yyyy hh:ss"/></td>
+						<td><fmt:formatDate value="${event.beginningDate}" pattern="dd/MM/yyyy hh:ss"/></td>
+						<td><fmt:formatDate value="${event.endDate}" pattern="dd/MM/yyyy hh:ss"/></td>
 						<td>
 							<c:choose>
-								<c:when test="${event.published}"> Yes </c:when>
-								<c:otherwise>                      No  </c:otherwise>
+								<c:when test="${event.published == 1}"> Yes </c:when>
+								<c:otherwise>                          No  </c:otherwise>
 							</c:choose>		
 						</td>
 						<td>
 							<c:choose>
-								<c:when test="${event.published}">
+								<c:when test="${event.published == 1}">
 									<a href="${pageContext.request.contextPath}/event" class="btn btn-primary">Show</a>
 								</c:when>
 								<c:otherwise>
