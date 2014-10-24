@@ -5,15 +5,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.demo.bean.jpa.EventsEntity;
+import org.demo.persistence.services.jpa.EventsPersistenceJPA;
 
 import controllers.common.EventManagerServlet;
 
@@ -39,10 +37,7 @@ public class EventNew extends EventManagerServlet {
 		}
 		catch (ParseException e) { throw new ServletException(); }
 		int published = "on".equals(request.getParameter("eventPublished")) ? 1 : 0;
-		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence-unit1");
-		EntityManager em = emf.createEntityManager();
-		
+
 		EventsEntity e = new EventsEntity();
 		e.setName(name);
 		e.setAddress(address);
@@ -50,12 +45,7 @@ public class EventNew extends EventManagerServlet {
 		e.setEndDate(endDate);
 		e.setPublished(published);
 		
-		em.getTransaction().begin();
-		em.persist(e);
-		em.getTransaction().commit();
-		
-		em.close();
-		emf.close();
+		new EventsPersistenceJPA().insert(e);
 		
 		redirectTo("/events", request, response);
 	}
