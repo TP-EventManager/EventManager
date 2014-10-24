@@ -2,16 +2,13 @@ package controllers.user;
 
 import java.io.IOException;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.demo.bean.jpa.UsersEntity;
+import org.demo.persistence.services.jpa.UsersPersistenceJPA;
 
 import controllers.common.EventManagerServlet;
 
@@ -32,14 +29,9 @@ public class UserNew extends EventManagerServlet {
 		UsersEntity new_user = new UsersEntity();
 		new_user.setEmail(user_email);
 		new_user.setPassword(user_password);
+
+		new UsersPersistenceJPA().insert(new_user);
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence-unit1");
-		EntityManager em = emf.createEntityManager();
-		
-		 em.persist(new_user);
-		
-		
-		em.close();
-		emf.close();
+		redirectTo("/events", request, response);
 	}
 }

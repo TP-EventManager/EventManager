@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.demo.bean.jpa.UsersEntity;
+import org.demo.persistence.services.jpa.UsersPersistenceJPA;
+
 import controllers.common.EventManagerServlet;
 
 @WebServlet("/login")
@@ -24,7 +27,10 @@ public class SessionNew extends EventManagerServlet {
 		String email    = request.getParameter("userEmail");
 		String password = request.getParameter("userPassword");
 		
-		if ("secret".equals(password)) {
+		UsersEntity user = new UsersPersistenceJPA().load(email);
+		if (user == null)
+			redirectTo("/login?error=credentials", request, response);
+		else if (user.getPassword().equals(password)) {
 			session.setAttribute("token", email);
 			redirectTo("/events", request, response);
 		}
