@@ -30,7 +30,7 @@
 						<td>
 							<c:choose>
 								<c:when test="${event.published == 1}">
-									<a href="${pageContext.request.contextPath}/event" class="btn btn-primary">Show</a>
+									<a href="${pageContext.request.contextPath}/event?id=${event.id}" class="btn btn-primary">Show</a>
 								</c:when>
 								<c:otherwise>
 									<form action="${pageContext.request.contextPath}/publish" method="post">
