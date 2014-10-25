@@ -27,4 +27,3 @@ public class EventList extends EventManagerServlet {
 		renderView("event/EventList.jsp", request, response);
 	}
 }
-
