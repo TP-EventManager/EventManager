@@ -6,10 +6,13 @@
 package org.demo.persistence.services.jpa;
 
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
+import org.demo.bean.jpa.EventsEntity;
 import org.demo.bean.jpa.UsersEntity;
 import org.demo.persistence.commons.jpa.GenericJpaService;
 import org.demo.persistence.commons.jpa.JpaOperation;

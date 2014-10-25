@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.demo.bean.jpa.EventsEntity;
-import org.demo.bean.jpa.UsersEntity;
-import org.demo.persistence.services.jpa.UsersPersistenceJPA;
 
 import controllers.common.EventManagerServlet;
+import model.EventsListQuery;
 
 @WebServlet("/events")
 public class EventList extends EventManagerServlet {
@@ -21,8 +20,7 @@ public class EventList extends EventManagerServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userMail  = (String)request.getSession(false).getAttribute("token");
-		UsersEntity user = new UsersPersistenceJPA().load(userMail);
-		List<EventsEntity> events = user.getListOfEvents();
+		List<EventsEntity> events = new EventsListQuery().execute(userMail);
 		request.setAttribute("events", events);
 		renderView("event/EventList.jsp", request, response);
 	}
