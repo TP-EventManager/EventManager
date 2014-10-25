@@ -34,6 +34,7 @@
 								</c:when>
 								<c:otherwise>
 									<form action="${pageContext.request.contextPath}/publish" method="post">
+										<input class="hidden" type="text" value="${event.id}" name="eventId">
 										<input type="submit" value="Publish" class="btn btn-primary">
 									</form>
 								</c:otherwise>

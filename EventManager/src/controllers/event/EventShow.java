@@ -20,7 +20,11 @@ public class EventShow extends EventManagerServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String eventId = request.getParameter("id");
 		EventsEntity event = new EventsPersistenceJPA().load(Integer.parseInt(eventId));
-		request.setAttribute("event", event);
-		renderView("event/EventShow.jsp", request, response);
+		if (event == null || event.getPublished() == 0)
+		    response.sendError(HttpServletResponse.SC_NOT_FOUND);
+		else {
+			request.setAttribute("event", event);
+			renderView("event/EventShow.jsp", request, response);
+		}
 	}
 }
