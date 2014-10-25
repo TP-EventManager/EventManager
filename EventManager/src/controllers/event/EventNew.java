@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.demo.bean.jpa.EventsEntity;
+import org.demo.bean.jpa.UsersEntity;
+import org.demo.persistence.services.UsersPersistence;
 import org.demo.persistence.services.jpa.EventsPersistenceJPA;
+import org.demo.persistence.services.jpa.UsersPersistenceJPA;
 
 import controllers.common.EventManagerServlet;
 
@@ -26,6 +29,9 @@ public class EventNew extends EventManagerServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String userMail = (String)request.getSession(false).getAttribute("token");
+		UsersEntity user = new UsersPersistenceJPA().load(userMail);
+		
 		String name      = request.getParameter("eventName");
 		String address   = request.getParameter("eventAddress");
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
@@ -44,6 +50,7 @@ public class EventNew extends EventManagerServlet {
 		e.setBeginningDate(begDate);
 		e.setEndDate(endDate);
 		e.setPublished(published);
+		e.setUsers(user);
 		
 		new EventsPersistenceJPA().insert(e);
 		redirectTo("/events", request, response);
