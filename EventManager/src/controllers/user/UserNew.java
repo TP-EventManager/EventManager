@@ -7,6 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.UsersValidator;
+
 import org.demo.bean.jpa.UsersEntity;
 import org.demo.persistence.services.jpa.UsersPersistenceJPA;
 
@@ -22,16 +24,17 @@ public class UserNew extends EventManagerServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		renderView("user/UserNew.jsp", request, response);
-		String user_email = request.getParameter("userEmail");
-		String user_password = request.getParameter("userPassword");
-		
-		UsersEntity new_user = new UsersEntity();
-		new_user.setEmail(user_email);
-		new_user.setPassword(user_password);
+		UsersEntity user = new UsersValidator().validate(
+				request.getParameter("userEmail"),
+				request.getParameter("userPassword"));
 
-		new UsersPersistenceJPA().insert(new_user);
-		
-		redirectTo("/events", request, response);
+		if (user != null) {
+			new UsersPersistenceJPA().insert(user);
+			request.getSession(true).setAttribute("token", user.getEmail());
+			redirectTo("/events", request, response);
+		}
+		else {
+			redirectTo("/user_new?invalid=true", request, response);
+		}
 	}
 }
