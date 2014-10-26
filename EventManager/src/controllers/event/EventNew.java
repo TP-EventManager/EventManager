@@ -10,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.EventsValidator;
+
 import org.demo.bean.jpa.EventsEntity;
 import org.demo.bean.jpa.UsersEntity;
 import org.demo.persistence.services.UsersPersistence;
@@ -29,31 +31,21 @@ public class EventNew extends EventManagerServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userMail = (String)request.getSession(false).getAttribute("token");
-		UsersEntity user = new UsersPersistenceJPA().load(userMail);
+		EventsEntity e = new EventsValidator().validate(
+				request.getParameter("eventName"), 
+				request.getParameter("eventAddress"), 
+				request.getParameter("eventBegDate"), 
+				request.getParameter("eventEndDate"), 
+				request.getParameter("eventPublished"), 
+				(String)request.getSession(false).getAttribute("token"));
 		
-		String name      = request.getParameter("eventName");
-		String address   = request.getParameter("eventAddress");
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
-		Date begDate;
-		Date endDate;
-		try {
-			begDate = sdf.parse(request.getParameter("eventBegDate"));
-			endDate = sdf.parse(request.getParameter("eventEndDate"));
+		if (e != null) {
+			new EventsPersistenceJPA().insert(e);
+			redirectTo("/events", request, response);
 		}
-		catch (ParseException e) { throw new ServletException(); }
-		int published = "on".equals(request.getParameter("eventPublished")) ? 1 : 0;
-
-		EventsEntity e = new EventsEntity();
-		e.setName(name);
-		e.setAddress(address);
-		e.setBeginningDate(begDate);
-		e.setEndDate(endDate);
-		e.setPublished(published);
-		e.setUsers(user);
-		
-		new EventsPersistenceJPA().insert(e);
-		redirectTo("/events", request, response);
+		else {
+			redirectTo("/event_new?invalid=true", request, response);
+		}
 	}
 
 }

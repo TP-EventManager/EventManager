@@ -1,6 +1,10 @@
 <%@ include file="/WEB-INF/jspf/Prolog.jspf" %>
 
 <section>
+	<c:if test="${param.invalid == \"true\" }">
+		<p class="alert alert-danger">Error: Invalid data</p>
+	</c:if>
+	
 	<h3> Add a new event </h3>
 	<form action="${pageContext.request.contextPath}/event_new" method="post">
 		<div class="form-group">
