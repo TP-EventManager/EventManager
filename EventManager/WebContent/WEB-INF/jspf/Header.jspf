@@ -14,6 +14,10 @@
 				</c:choose>						
 			</div>
 					
+			<c:if test="${!empty sessionScope.token}">
+				<p class="navbar-text">${sessionScope.token}</p>
+			</c:if>
+					
 			<c:choose>
 				<c:when test="${empty sessionScope.token}">
     				<div class="nav navbar-nav navbar-form navbar-right">
