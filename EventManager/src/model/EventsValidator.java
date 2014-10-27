@@ -19,6 +19,8 @@ public class EventsValidator {
 		event.setAddress(address);
 		
 		UsersEntity user = new UsersPersistenceJPA().load(email);
+		if (user == null)
+			return null;
 		event.setUsers(user);
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm a");

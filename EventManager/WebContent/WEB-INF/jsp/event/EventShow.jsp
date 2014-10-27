@@ -1,6 +1,13 @@
 <%@ include file="/WEB-INF/jspf/Prolog.jspf" %>
 
 <section>
+	<c:if test="${param.invalid == \"true\" }">
+		<p class="alert alert-danger">Error: Invalid data</p>
+	</c:if>
+	<c:if test="${param.subscribed == \"true\" }">
+		<p class="alert alert-success">Congratulations ! You've subscribed to this event.</p>
+	</c:if>
+
 	<h3> ${event.name} </h3>
 	<table class="table">
 		<tr>
@@ -36,13 +43,15 @@
 
 		<div class="form-group">
 			<label for="user_lastname">Your last name*</label> 
-			<input type="text" id="user_lastname" name="userlastName" required class="form-control">
+			<input type="text" id="user_lastname" name="userLastName" required class="form-control">
 		</div>
 
 		<div class="form-group">
 			<label for="user_company">Your company*</label> 
 			<input type="text" id="user_company" name="userCompany" required class="form-control">
 		</div>
+		
+		<input class="hidden" type="text" value="${event.id}" name="eventId">
 		
 		<input type="submit" value="Subscribe" class="btn btn-primary btn-lg">
 	</form>
