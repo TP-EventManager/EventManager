@@ -26,6 +26,12 @@
 	</table>
 </section>
 
+<c:if test="${!empty sessionScope.token}">
+	<a href="${pageContext.request.contextPath}/subscribers?id=${event.id}" class="btn btn-primary">See Subscribers</a>
+</c:if>
+
+<hr>
+
 <section class="panel panel-default">
 	<header class="panel-heading">
 		<h4>Subscribe to this Event</h4>

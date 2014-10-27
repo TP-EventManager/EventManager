@@ -24,7 +24,7 @@ public class SubscriptionNew extends EventManagerServlet {
 		
 		SubscriptionsEntity s = new SubscriptionsValidator().validate(
 				request.getParameter("userEmail"), 
-				request.getParameter("eventFirstName"), 
+				request.getParameter("userFirstName"), 
 				request.getParameter("userLastName"), 
 				request.getParameter("userCompany"),
 				eventId);
