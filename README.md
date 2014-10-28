@@ -53,7 +53,7 @@ Logout            | POST /logout
 action      | url
 ------------|--------
 Subcribe to event         | POST /subscribe
-Show subscribers of event | GET  /subscribers?event=UUID
+Show subscribers of event | GET  /subscribers?event=ID
 
 ### Event
 
@@ -63,4 +63,4 @@ List Event               | GET  /events
 Get form to create event | GET  /new_event
 Create Event             | POST /new_event
 Publish Event            | POST /publish
-Show Event               | GET  /event?uuid=UUID
+Show Event               | GET  /event?id=ID
