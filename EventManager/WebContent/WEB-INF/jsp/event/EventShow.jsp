@@ -26,7 +26,7 @@
 	</table>
 </section>
 
-<c:if test="${!empty sessionScope.token}">
+<c:if test="${!empty sessionScope.token && sessionScope.token eq event.users.email}">
 	<a href="${pageContext.request.contextPath}/subscribers?id=${event.id}" class="btn btn-primary">See Subscribers</a>
 </c:if>
 
