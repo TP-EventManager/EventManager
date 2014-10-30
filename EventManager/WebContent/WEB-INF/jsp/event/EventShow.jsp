@@ -39,7 +39,7 @@
 	<form action="${pageContext.request.contextPath}/subscribe" method="post" class="panel-body">
 		<div class="form-group">
 			<label for="user_email">Your email*</label> 
-			<input type="email" id="user_email" name="userEmail" required class="form-control">
+			<input type="email" id="user_email" name="userEmail" required class="form-control" value="${(!empty sessionScope.token)?sessionScope.token:''}">
 		</div>
 		
 		<div class="form-group">
